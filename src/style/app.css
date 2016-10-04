@@ -21,7 +21,7 @@ a {
     max-width: 64px;
 }
 
-.media:hover .media-object {
+a:hover .media-object {
     background-color: #339989;
 }
 
