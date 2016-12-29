@@ -1,10 +1,25 @@
 import React, { Component, PropTypes } from 'react';
-import Header from '../components/common/Header';
-import MediaSet from '../components/common/MediaSet';
+import { connect } from 'react-redux';
 
+import Header from '../../components/Header';
+import MediaSet from '../../components/MediaSet';
+import Twitch from '../../components/Twitch';
+
+import { fetchStatus } from '../../redux/actions/streamActions';
+
+@connect(
+  reduxState => ({
+    status: reduxState.get('channel'),
+  }),
+  {
+    fetchStatus,
+  },
+)
 export default class Layout extends Component {
   static propTypes = {
     mediaSets: PropTypes.arrayOf(PropTypes.object),
+    fetchStatus: PropTypes.func,
+    status: PropTypes.object,
   };
 
   static defaultProps = {
@@ -43,6 +58,11 @@ export default class Layout extends Component {
     ],
   }
 
+  componentDidMount() {
+    this.props.fetchStatus('4rChon');
+    console.log(this.props);
+  }
+
   _renderMediaSets = (item, i = 0) => {
     return (
       <MediaSet
@@ -54,14 +74,20 @@ export default class Layout extends Component {
   }
 
   render() {
-    const { mediaSets } = this.props;
+    //const data = status.get('data');
+    const isFetching = true; //status.get('isFetching');
+    //console.log(data);
+    //console.log(status);
 
     return (
       <div className="container-fluid">
         <Header />
         <div className="row">
-          {mediaSets.map(this._renderMediaSets)}
+          {this.props.mediaSets.map(this._renderMediaSets)}
         </div>
+        {
+          !isFetching && <Twitch channel="4rChon" />
+        }
       </div>
     );
   }

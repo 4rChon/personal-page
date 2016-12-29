@@ -1,1 +1,1 @@
-export const API_CLIENT_BASE_URL = 'https://jsonplaceholder.typicode.com';
+export const API_CLIENT_BASE_URL = 'https://api.twitch.tv/kraken';
