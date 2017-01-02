@@ -9,20 +9,23 @@ import { fetchStatus } from '../../redux/actions/streamActions';
 
 @connect(
   reduxState => ({
-    status: reduxState.get('channel'),
+    stream: reduxState.get('stream'),
   }),
   {
     fetchStatus,
   },
 )
+
 export default class Layout extends Component {
   static propTypes = {
+    channel: PropTypes.string,
     mediaSets: PropTypes.arrayOf(PropTypes.object),
     fetchStatus: PropTypes.func,
-    status: PropTypes.object,
+    stream: PropTypes.object,
   };
 
   static defaultProps = {
+    channel: '4rchon',
     mediaSets: [
       {
         title: 'Code',
@@ -59,8 +62,11 @@ export default class Layout extends Component {
   }
 
   componentDidMount() {
-    this.props.fetchStatus('4rChon');
-    console.log(this.props);
+    this._handleFetch();
+  }
+
+  _handleFetch() {
+    this.props.fetchStatus(this.props.channel);
   }
 
   _renderMediaSets = (item, i = 0) => {
@@ -74,10 +80,8 @@ export default class Layout extends Component {
   }
 
   render() {
-    //const data = status.get('data');
-    const isFetching = true; //status.get('isFetching');
-    //console.log(data);
-    //console.log(status);
+    const isLoading = this.props.stream.get('isFetching');
+    const isOnline = this.props.stream.get('online');
 
     return (
       <div className="container-fluid">
@@ -86,7 +90,7 @@ export default class Layout extends Component {
           {this.props.mediaSets.map(this._renderMediaSets)}
         </div>
         {
-          !isFetching && <Twitch channel="4rChon" />
+          !isLoading && isOnline && <Twitch channel={this.props.channel} />
         }
       </div>
     );

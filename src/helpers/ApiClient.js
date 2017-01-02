@@ -84,11 +84,6 @@ export default class ApiClient {
           }
         }
 
-        if (method.toLowerCase() === 'get') {
-          init.headers['Cache-Control'] = 'no-cache';
-          init.headers.Pragma = 'no-cache';
-        }
-
         fetch(url, init)
           .then(checkStatus)
           .then(parseJson)

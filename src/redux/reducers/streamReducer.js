@@ -16,15 +16,16 @@ const initialState = new DefaultState();
 
 export default function streamReducer(state = initialState, action) {
   switch (action.type) {
-
     case REQUEST_STATUS:
       return state.merge({ isFetching: true });
 
     case SUCCESS_STATUS:
-      return state.merge({
-        isFetching: false,
-        online: Immutable.fromJS(action.result),
-      });
+      {
+        return state.merge({
+          isFetching: false,
+          online: action.result.stream != null,
+        });
+      }
 
     case FAILURE_STATUS:
       return state.merge({
