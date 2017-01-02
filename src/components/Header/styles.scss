@@ -8,6 +8,7 @@
 
 .header__media_heading {
     margin: 5px;
+    display: inline-block;
 }
 
 .header__media {
@@ -16,7 +17,7 @@
 
 @media (min-width: 768px) {
     .header__media {
-        margin: 0px 0px 0px 25px;
+        margin: 0px 25px 0px 25px;
     }
 }
 

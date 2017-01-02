@@ -3,13 +3,13 @@ import { createStore, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
 import loggerMiddleware from 'redux-logger';
 
-import createClientMiddleware from './clientMiddleware';
+import createPromiseMiddleware from './promiseMiddleware';
 import rootReducer from '../reducers';
 
 export default function configureStore(client) {
   const middlewareList = [
     thunk,
-    createClientMiddleware(client),
+    createPromiseMiddleware(client),
   ];
 
   if (__DEV__) {

@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 
 import Header from '../../components/Header';
 import MediaSet from '../../components/MediaSet';
+import ScrollDown from '../../components/ScrollDown';
 import Twitch from '../../components/Twitch';
 
 import { fetchStatus } from '../../redux/actions/streamActions';
@@ -25,7 +26,7 @@ export default class Layout extends Component {
   };
 
   static defaultProps = {
-    channel: '4rchon',
+    channel: 'ByunPrime',
     mediaSets: [
       {
         title: 'Code',
@@ -62,10 +63,6 @@ export default class Layout extends Component {
   }
 
   componentDidMount() {
-    this._handleFetch();
-  }
-
-  _handleFetch() {
     this.props.fetchStatus(this.props.channel);
   }
 
@@ -85,12 +82,15 @@ export default class Layout extends Component {
 
     return (
       <div className="container-fluid">
-        <Header />
+        <Header online={isOnline} />
         <div className="row">
           {this.props.mediaSets.map(this._renderMediaSets)}
         </div>
+        <ScrollDown />
         {
-          !isLoading && isOnline && <Twitch channel={this.props.channel} />
+          isLoading
+          ? <div>Checking Stream Status...</div>
+          : <Twitch online={isOnline} channel={this.props.channel} />
         }
       </div>
     );
