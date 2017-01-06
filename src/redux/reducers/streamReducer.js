@@ -4,12 +4,15 @@ import {
   REQUEST_STATUS,
   SUCCESS_STATUS,
   FAILURE_STATUS,
+  SHOW_STREAM,
+  HIDE_STREAM,
 } from '../actions/streamActions';
 
 const DefaultState = Immutable.Record({
   isFetching: false,
   online: false,
   error: '',
+  show: false,
 });
 
 const initialState = new DefaultState();
@@ -31,6 +34,16 @@ export default function streamReducer(state = initialState, action) {
       return state.merge({
         isFetching: false,
         error: 'Server Error',
+      });
+
+    case SHOW_STREAM:
+      return state.merge({
+        show: action.show,
+      });
+
+    case HIDE_STREAM:
+      return state.merge({
+        show: action.show,
       });
 
     default:

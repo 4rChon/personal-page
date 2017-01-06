@@ -1,0 +1,22 @@
+@import "../../views/layout/_colours.scss";
+
+.stream__show {
+	display: block;
+	background: none;
+	border: none;
+	margin: auto;
+	height: 50px;
+	font-size: 24px;
+	border-radius: 6px;
+	border: 1px solid $green;
+	min-width: 160px;
+}
+
+.stream__show:hover {
+	color: $light-green;
+	border: 1px solid $light-green;
+}
+
+.stream__show:active {
+
+}

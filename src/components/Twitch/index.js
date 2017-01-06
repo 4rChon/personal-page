@@ -13,8 +13,7 @@ export default class Twitch extends Component {
       <div className={`col-sm-10 ${styles.twitch}`}>
         {
           this.props.online
-          ? <div>
-            <div>Stream Online</div>
+          && <div>
             <div className={styles.twitch__stream}>
               <iframe src={`http://player.twitch.tv/?channel=${this.props.channel}`} frameBorder="0" scrolling="no" allowFullScreen />
             </div>
@@ -22,9 +21,7 @@ export default class Twitch extends Component {
               <iframe src={`http://www.twitch.tv/${this.props.channel}/chat`} frameBorder="0" allowFullScreen />
             </div>
           </div>
-          : <div>Stream Offline</div>
         }
-        
       </div>
     );
   }
