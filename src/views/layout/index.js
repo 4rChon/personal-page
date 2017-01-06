@@ -1,5 +1,8 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
+import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
+
+import styles from './styles.scss';
 
 import Header from '../../components/Header';
 import ShowStream from '../../components/ShowStream';
@@ -26,7 +29,7 @@ export default class Layout extends Component {
   };
 
   static defaultProps = {
-    channel: '4rChon',
+    channel: 'HiRezTV',
     mediaSets: [
       {
         title: 'Code',
@@ -65,7 +68,6 @@ export default class Layout extends Component {
   componentDidMount() {
     this.props.fetchStatus(this.props.channel);
   }
-
   _renderMediaSets = (item, i = 0) => {
     return (
       <MediaSet
@@ -85,15 +87,15 @@ export default class Layout extends Component {
       <div className="container-fluid">
         <Header online={isOnline} isLoading={isLoading} />
         <div className="row">
-          {this.props.mediaSets.map(this._renderMediaSets)}
+          {!isShown && this.props.mediaSets.map(this._renderMediaSets)}
         </div>
-        {
-          !isLoading && isOnline && <ShowStream />
-        }
-        {
-          isShown && <Twitch online={isOnline} channel={this.props.channel} />
-        }
+        {!isLoading && isOnline && <ShowStream />}
+        <div className="row">
+          {isShown && <Twitch online={isOnline} channel={this.props.channel} />}
+        </div>
       </div>
     );
   }
 }
+
+
