@@ -30,7 +30,7 @@ export default class Layout extends Component {
 
 
   static defaultProps = {
-    channel: 'Elajjaz',
+    channel: '4rChon',
     mediaSets: [
       {
         title: 'Code',
