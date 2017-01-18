@@ -1,11 +1,8 @@
 @import "./_colours.scss";
 
-:global * {
-  -webkit-transition: all 0.2s ease;
-  -moz-transition:    all 0.2s ease;
-  -ms-transition:     all 0.2s ease;
-  -o-transition:      all 0.2s ease;
-}
+/*:global * {
+  transition:         all 0.2s ease;
+}*/
 
 body {
   background-color: $black;
@@ -17,9 +14,49 @@ body small {
 }
 
 .serif {
-    font-family: Garamond, Georgia, serif
+  font-family: Garamond, Georgia, serif
 }
 
 .sans_serif {
-    font-family: Verdana, Arial, sans-serif;
+  font-family: Verdana, Arial, sans-serif;
 }
+
+.enter__top {
+  opacity: 0.01;
+  transform: translateY(-100vh);
+}
+
+.enter__top.enter__top_active {
+  opacity: 1;
+  transform: translateY(0);
+  transition: all 500ms ease-in 300ms;
+}
+
+.leave__top {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.leave__top.leave__top_active {
+  opacity: 0.01;
+  transform: translateY(-100vh);
+  transition: all 200ms ease-out;
+}
+
+/*.enter__bottom {
+  transform: translateY(100vh);
+}
+
+.enter__bottom.enter__bottom_active {
+  transform: translateY(0);
+  transition: transform 200ms ease-in 200ms;
+}
+
+.leave__bottom {
+  transform: translateY(0);
+}
+
+.leave__bottom.leave__bottom_active {
+  transform: translateY(100vh);
+  transition: transform 200ms ease-in;
+}*/

@@ -28,8 +28,9 @@ export default class Layout extends Component {
     stream: PropTypes.object,
   };
 
+
   static defaultProps = {
-    channel: 'HiRezTV',
+    channel: 'Elajjaz',
     mediaSets: [
       {
         title: 'Code',
@@ -68,7 +69,8 @@ export default class Layout extends Component {
   componentDidMount() {
     this.props.fetchStatus(this.props.channel);
   }
-  _renderMediaSets = (item, i = 0) => {
+
+  _renderMediaSets = (item, i) => {
     return (
       <MediaSet
         key={i}
@@ -83,19 +85,41 @@ export default class Layout extends Component {
     const isOnline = this.props.stream.get('online');
     const isShown = this.props.stream.get('show');
 
+    const mediaSets = this.props.mediaSets.map(this._renderMediaSets);
+
     return (
       <div className="container-fluid">
         <Header online={isOnline} isLoading={isLoading} />
         <div className="row">
-          {!isShown && this.props.mediaSets.map(this._renderMediaSets)}
+          <ReactCSSTransitionGroup
+            transitionName={{
+              enter: `${styles.enter__top}`,
+              enterActive: `${styles.enter__top_active}`,
+              leave: `${styles.leave__top}`,
+              leaveActive: `${styles.leave__top_active}`,
+            }}
+            transitionEnterTimeout={500}
+            transitionLeaveTimeout={200}
+          >
+            { !isShown && mediaSets }
+          </ReactCSSTransitionGroup>
         </div>
         {!isLoading && isOnline && <ShowStream />}
         <div className="row">
-          {isShown && <Twitch online={isOnline} channel={this.props.channel} />}
+          <ReactCSSTransitionGroup
+            transitionName={{
+              enter: `${styles.enter__bottom}`,
+              enterActive: `${styles.enter__bottom_active}`,
+              leave: `${styles.leave__bottom}`,
+              leaveActive: `${styles.leave__bottom_active}`,
+            }}
+            transitionEnterTimeout={200}
+            transitionLeaveTimeout={1}
+          >
+            { isShown && <Twitch key="stream_view" online={isOnline} channel={this.props.channel} /> }
+          </ReactCSSTransitionGroup>
         </div>
       </div>
     );
   }
 }
-
-
