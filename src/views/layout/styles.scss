@@ -29,7 +29,7 @@ body small {
 .enter__top.enter__top_active {
   opacity: 1;
   transform: translateY(0);
-  transition: all 500ms ease-in 300ms;
+  transition: all 500ms ease-in;
 }
 
 .leave__top {
