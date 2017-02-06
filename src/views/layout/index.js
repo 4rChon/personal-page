@@ -38,6 +38,7 @@ export default class Layout extends Component {
           { link: 'https://github.com/4rChon/ACT-AI', title: 'ACT-AI', description: 'University FYP - A task driven AI for StarCraft: Brood War', imgPath: 'img/code.png' },
           { link: 'https://github.com/4rChon/BackFire', title: 'BackFire', description: 'An arcade-y time-waster to learn TypeScript', imgPath: 'img/code.png' },
           { link: 'https://github.com/4rChon/webrtc-p2p-chat', title: 'WebRTC P2P Chat', description: 'Messing around with WebRTC', imgPath: 'img/code.png' },
+          { link: 'https://github.com/4rChon/DiscordBot', title: 'Discord Bot', description: 'Perceptron Tagging and Hidden Markov Models to learn from chat rooms and generate new sentences', imgPath: 'img/code.png' },
         ],
       },
       {
@@ -46,7 +47,7 @@ export default class Layout extends Component {
           { link: 'https://www.twitch.tv/4rchon', title: 'Twitch', description: 'Mostly StarCraft II 1v1 Masters Ladder, but sometimes I play other games', imgPath: 'img/twitch.png' },
           { link: 'https://twitter.com/b_bugeja', title: 'Twitter', description: 'I don\'t tweet a lot, but I like watching numbers grow', imgPath: 'img/twitter.png' },
           { link: 'https://www.pinterest.com/bendbug/dark-souls', title: 'Pinterest', description: 'Mostly Dark Souls pins and art inspiration', imgPath: 'img/pinterest.png' },
-          { link: '#', title: 'Discord', description: 'ArChon#0000 (TODO)', imgPath: 'img/discord.png' },
+          { link: '#', title: 'Discord', description: 'ArChon#7601', imgPath: 'img/discord.png' },
           { link: '#', title: 'BattleTag', description: 'ArChon#0000 (TODO)', imgPath: 'img/battlenet.png' },
         ],
       },
