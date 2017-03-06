@@ -15,10 +15,10 @@ export default class Twitch extends Component {
           this.props.online
           && <div>
             <div className={styles.twitch__stream}>
-              <iframe src={`http://player.twitch.tv/?channel=${this.props.channel}`} frameBorder="0" scrolling="no" allowFullScreen />
+              <iframe src={`https://player.twitch.tv/?channel=${this.props.channel}`} frameBorder="0" scrolling="no" allowFullScreen />
             </div>
             <div className={styles.twitch__chat}>
-              <iframe src={`http://www.twitch.tv/${this.props.channel}/chat`} frameBorder="0" allowFullScreen />
+              <iframe src={`https://www.twitch.tv/${this.props.channel}/chat`} frameBorder="0" allowFullScreen />
             </div>
           </div>
         }
